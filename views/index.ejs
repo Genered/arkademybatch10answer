@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>Daftar Tugas</title>
+
+        <style>
+            .flex{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+        </style>
+    </head>
+
+    <body>        
+        <div class="container mt-3">                     
+            <h1 class="mb-5 text-center"><strong>Candidates</strong></h1>
+            <div class="jumbotron flex">                               
+                <% candidates.forEach(function (candidate) { %>        
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title"><%= candidate.name %> </h5>
+
+                        <p class="card-text">Number of votes <%= candidate.earned_vote %></p>                            
+                        
+                        <form action="/<%= candidate.id %>/<%= candidate.earned_vote %>?_method=PUT" method="POST">
+                            <button class="btn btn-primary btn-lg">Add Vote</button>
+                        </form>
+                    </div>                                            
+                </div>
+                <% }); %>                
+            </div>            
+        </div>        
+    </body>
+</html>
